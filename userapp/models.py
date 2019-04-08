@@ -19,3 +19,10 @@ class UserInfo(models.Model):
     login_date=models.CharField(max_length=255, default="")
     logout_time=models.CharField(max_length=255, default="")
 
+class SignUpUser(models.Model):
+    first_name=models.CharField(max_length=225,default="")
+    last_name = models.CharField(max_length=225, default="")
+    email = models.CharField(primary_key=True,max_length=225, default="")
+    confirm_password = models.CharField(max_length=20, default="")
+    SignUp_time = models.CharField(max_length=255, default="")
+    SignUp_date = models.CharField(max_length=255, default="")

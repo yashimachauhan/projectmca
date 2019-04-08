@@ -16,15 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from  nutritionapp import views
 from userapp import views
+
 
 urlpatterns = [
     url(r'^$',views.basemaster),
     url(r'^admin/', admin.site.urls),
     url(r'user/',include('userapp.urls')),
-    url(r'nutrition/',include('nutritionapp.urls')),
+    url(r'^nutrition/',include('nutritionapp.urls')),
     url(r'^notlogin/',views.notlogin,name="notlogin"),
     url(r'^wronguser/', views.wronguser, name="wronguser"),
-
+    url(r'^product/',include('product.urls')),
+    url(r'^fitness/',include('fitnessapp.urls')),
+    url(r'^logout',views.logout,name="logout"),
 ]

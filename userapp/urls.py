@@ -1,4 +1,3 @@
-
 from django.conf.urls import url
 from userapp import views
 

@@ -16,7 +16,7 @@ def logout(request):
     request.session['authenticated']=False
     return redirect("/")
 
-def nutritionindex(request):
+'''def nutritionindex(request):
 
     try:
         auth=au.authriseuser(request.session["authenticated"],request.session["roleid"],2)
@@ -37,18 +37,21 @@ def nutritionlogin(request):
     if (request.method == "POST"):
         uemail = request.POST["email"]
         upassword = request.POST["password"]
-        #try:
-        userdata = UserInfo.objects.get(user_email=uemail)
-        dp = userdata.user_password
-        if (dp == upassword):
+        try:
+            userdata = UserInfo.objects.get(user_email=uemail)
+            dp = userdata.user_password
+            if (dp == upassword):
                 request.session['authenticated']=True
                 request.session['roleid']=userdata.role_id_id
                 request.session['useremail']=userdata.user_email
-        return redirect("/nutrition/nutritionindex")
-        #except:
-        #    return render(request, "nutritionlogin.html")
+                return redirect("/nutrition/nutritionindex")
+            else:
+                return redirect("/")
+        except:
+             return redirect( "/")
     return render(request,"nutritionlogin.html")
-
+'''
 def signup(request):
+
     return render(request,"signup.html")
 
