@@ -36,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="homepage.html">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
         </div>
@@ -44,7 +44,11 @@
 </header>
 
 <div class="signup-form col-sm-4 offset-sm-4">
-    <form class="text-light" >
+    <form class="text-light" method="POST">
+        {% csrf_token %}
+        {% if inserted %}
+        <script>alert('You are registered Successfully')</script>
+        {% endif %}
 		<h2 >Sign Up</h2>
 		<p >Please fill in this form to create an account!</p>
         <hr>

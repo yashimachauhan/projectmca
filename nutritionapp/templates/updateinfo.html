@@ -1,0 +1,31 @@
+{% extends 'nutritionindex.html' %}
+{% block title %}
+<title>Settings</title>
+{% endblock %}
+{% block main %}
+<div class="main-content">
+<form method="POST">
+    {% csrf_token %}
+    {% if inserted %}
+        <script>alert('Password Updated Succesfully')</script>
+    {% endif %}
+    <h4 class="text-center">Update</h4><br>
+    <div class="form-row justify-content-center">
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control" name="old" placeholder="Enter old password" required></div>
+        </div>
+    <div class="form-row justify-content-center">
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control" name="new" placeholder="Enter new password" required></div>
+        </div>
+    <div class="form-row justify-content-center">
+			<div class="form-group col-md-6">
+				<input type="text" class="form-control" name="confirm" placeholder="Confirm Your Password" required></div>
+        </div>
+    <div class="form-row justify-content-center">
+            <button type="submit" class="btn btn-primary btn-lg col-md-6">Update</button>
+            </div><br>
+</form>
+
+</div>
+{% endblock %}

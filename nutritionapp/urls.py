@@ -8,5 +8,6 @@ urlpatterns=[
 
     url(r'^nutritionlogin',views.nutritionlogin,name="nutritionlogin"),
     url(r'^nutritionindex',views.nutritionindex,name="nutritionindex"),
-
+    url(r'^weightgain',views.weightgain,name="weightgain"),
+    url(r'^updateinfo',views.updateinfo,name='updateinfo'),
 ]
