@@ -40,3 +40,9 @@ def nutritionlogin(request):
         except:
              return redirect( "/")
     return render(request,"nutritionlogin.html")
+
+def dietplan(request):
+    return render(request,"dietplans.html")
+
+def weightloss(request):
+    return render(request,"weightloss.html")

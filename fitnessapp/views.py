@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from userapp.models import  UserInfo
 import authorize as au
 # Create your views here.
 def fitnessindex(request):
@@ -14,7 +15,8 @@ def fitnessindex(request):
             return redirect("/wrong user/")
         elif(message=="Not Login"):
             return redirect("/notlogin/")
+def fitgain(request):
+    return render(request,"fitgain.html")
 
-
-
-
+def fitloss(request):
+    return render(request,"fitloss.html")

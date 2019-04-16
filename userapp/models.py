@@ -18,6 +18,8 @@ class UserInfo(models.Model):
     login_time=models.CharField(max_length=255, default="")
     login_date=models.CharField(max_length=255, default="")
     logout_time=models.CharField(max_length=255, default="")
+    otp = models.CharField(max_length=225, default="", null="True")
+    otptime = models.CharField(max_length=225, default="", null="True")
 
 class SignUpUser(models.Model):
     first_name=models.CharField(max_length=225,default="")

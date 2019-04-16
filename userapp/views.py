@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
-from userapp.models import UserInfo
+from userapp.models import UserInfo, SignUpUser
+from userapp.forms import SignUpForm
 import authorize as au
 
 # Create your views here.
@@ -16,42 +17,17 @@ def logout(request):
     request.session['authenticated']=False
     return redirect("/")
 
-'''def nutritionindex(request):
 
-    try:
-        auth=au.authriseuser(request.session["authenticated"],request.session["roleid"],2)
-    except:
-        return redirect("/notlogin/")
-    if(auth):
-        return render(request,'nutritionindex.html')
-    else:
-        aut,message=auth
-        if(message=="Wrong User"):
-            return redirect("/wrong user/")
-        elif(message=="Not Login"):
-            return redirect("/notlogin/")
-
-
-
-def nutritionlogin(request):
-    if (request.method == "POST"):
-        uemail = request.POST["email"]
-        upassword = request.POST["password"]
-        try:
-            userdata = UserInfo.objects.get(user_email=uemail)
-            dp = userdata.user_password
-            if (dp == upassword):
-                request.session['authenticated']=True
-                request.session['roleid']=userdata.role_id_id
-                request.session['useremail']=userdata.user_email
-                return redirect("/nutrition/nutritionindex")
-            else:
-                return redirect("/")
-        except:
-             return redirect( "/")
-    return render(request,"nutritionlogin.html")
-'''
 def signup(request):
+    if request.method=="POST":
+        form=SignUpForm(request.POST)
+        f=form.save(commit=False)
+        f.first_name=request.POST["first_name"]
+        f.last_name=request.POST["last_name"]
+        f.email=request.POST["email"]
 
+        f.confirm_password=request.POST["confirm_password"]
+        f.save()
+        return render(request,"signup.html",{'registered':True})
     return render(request,"signup.html")
 
