@@ -1,11 +1,23 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <title>Login</title>
+    {% block title %}<title>Login</title>
+    {% endblock %}
 <style>
+    body,html{
+        height:100%;
+        }
+        .bg{
+        background-image:url("/assets/images/rawpixel-1149532-unsplash.jpg");
+        height:100%;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:cover;
+        }
     .login-form
     {
     padding-top:40px;
@@ -13,9 +25,10 @@
 </style>
 </head>
 <body>
+<div class="bg">
 <header >
-   <nav class="navbar navbar-expand-xl navbar-dark bg-info">
-    <a class="navbar-brand offset-md-6" href="#">GetFit Advisor</a>
+   <nav class="navbar navbar-expand-xl navbar-dark ">
+       <a class="navbar-brand  text-black-50" href="/"><strong>GetFit Advisor</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,19 +42,21 @@
       </li>
       </ul>
       <form class="form-inline my-2 my-xl-0">
-          <button type="submit" class="btn btn-outline-warning  my-2 my-sm-0"><a href="register.html" class="text-light">SignUp</a></button>
+          <button type="submit" class="btn btn-outline-warning  my-2 my-sm-0"><a href="/user/signup/" class="text-light">SignUp</a></button>
       </form>
   </div>
 </nav>
 </header>
 </nav>
+{% block heading %}
     <div class="offset-sm-0">
     <h1 class="text-center">Log-in</h1>
     <p class="text-center">Please Login to Continue</p><hr></div>
+{% endblock %}
 <form method="POST" >
     {% csrf_token %}
     {% if inserted %}
-        <script>alert('Data validated')</script>
+        <script>alert('Enter Valid Credentials')</script>
     {% endif %}
     <div class="login-form col-sm-4 offset-sm-4">
         <div class="form-group col-md-12">
@@ -49,13 +64,21 @@
     <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required="required">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
+        {% block change %}
   <div class="form-group col-md-12">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" name="password"id="exampleInputPassword1" placeholder="Password" required="required">
   </div>
-  <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+
+  <button type="submit" class="btn btn-primary btn-lg btn-block">LogIn</button>
         </div>
+<div class="text-center">
+            <a href="/user/forgot/"><u>Forgot Password??..Click Here</u></a>
+        </div>
+{% endblock %}
 </form>
+</div>
+
     <script src="/assets/js/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="/assets/js/bootstrap.min.js"></script>

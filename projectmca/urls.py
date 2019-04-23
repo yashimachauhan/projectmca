@@ -29,4 +29,7 @@ urlpatterns = [
     url(r'^product/',include('product.urls')),
     url(r'^fitness/',include('fitnessapp.urls')),
     url(r'^logout',views.logout,name="logout"),
+    url(r'^about/',views.about,name="about"),
+    url(r'^afterlog/',views.afterlog,name="afterlog"),
+    url(r'^video/',views.video,name="video"),
 ]
